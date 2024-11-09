@@ -15,6 +15,7 @@ public class UserServiceTest {
         userService = new UserService(userRepository);
         userService.registerUser("admin", "1234");
         userService.registerUser("ali", "qwert");
+        userService.registerUser("amin","asdf","amin@gmail.com");
     }
 
     @Test
@@ -52,7 +53,7 @@ public class UserServiceTest {
     }
     @Test
     public void loginWithValidEmailAndPassword__shouldSuccess() {
-        boolean login = userService.loginWithEmail("admin@gmail.com", "1234");
+        boolean login = userService.loginWithEmail("amin@gmail.com", "asdf");
         assertTrue(login);
     }
 }
