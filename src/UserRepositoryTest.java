@@ -37,8 +37,8 @@ public class UserRepositoryTest {
     public void getContainingUserByEmail__ShouldReturn() {
         User amin = repository.getUserByEmail("amin@gmail.com");
         assertNotNull(amin);
-        //assertEquals("amin@gmail.com", amin.getEmail());
-        //assertEquals("asdf", amin.getPassword());
+        assertEquals("amin@gmail.com", amin.getEmail());
+        assertEquals("asdf", amin.getPassword());
     }
 
     @Test
