@@ -42,6 +42,12 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void getNotContainingUserByEmail__ShouldReturnNull() {
+        User user = repository.getUserByEmail("reza@gmail.com");
+        assertNull(user);
+    }
+
+    @Test
     public void createRepositoryWithDuplicateUsers__ShouldThrowException() {
         User user1 = new User("ali", "1234");
         User user2 = new User("ali", "4567");
