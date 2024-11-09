@@ -9,3 +9,6 @@
 
 ## بعد از پاس کردن تست های service
 ![alt text](https://github.com/aminhasanz/Software-Lab-3/blob/master/Screenshot%20(34).png?raw=true)
+
+## بعد از اضافه کردن تست دریافت کاربر با ایملیلی که وجود ندارد
+![alt text](https://github.com/aminhasanz/Software-Lab-3/blob/master/Screenshot%20(38).png?raw=true)
