@@ -14,7 +14,8 @@ public class UserRepositoryTest {
         List<User> userList = Arrays.asList(
                 new User("admin", "1234"),
                 new User("ali", "qwert"),
-                new User("mohammad", "123asd"));
+                new User("mohammad", "123asd"),
+                new User("amin", "asdf","amin@gmail.com"));
         repository = new UserRepository(userList);
     }
 
@@ -30,6 +31,14 @@ public class UserRepositoryTest {
     public void getNotContainingUser__ShouldReturnNull() {
         User user = repository.getUserByUsername("reza");
         assertNull(user);
+    }
+
+    @Test
+    public void getContainingUserByEmail__ShouldReturn() {
+        User amin = repository.getUserByEmail("amin@gmail.com");
+        assertNotNull(amin);
+        //assertEquals("amin@gmail.com", amin.getEmail());
+        //assertEquals("asdf", amin.getPassword());
     }
 
     @Test
