@@ -22,3 +22,8 @@
 
 نوشتن متد removeUSer
 ![image](https://github.com/user-attachments/assets/b45b4796-fe42-4a4f-bf63-2294966d4d35)
+
+پاس شدن تست بعد نوشتن متد
+![image](https://github.com/user-attachments/assets/7f3d5daf-99f6-41da-8e2a-bd1df28153f4)
+
+
