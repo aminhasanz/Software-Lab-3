@@ -12,3 +12,7 @@
 
 ## بعد از اضافه کردن تست دریافت کاربر با ایملیلی که وجود ندارد
 ![alt text](https://github.com/aminhasanz/Software-Lab-3/blob/master/Screenshot%20(38).png?raw=true)
+
+
+مجددا استیت فعلی کاوریج را مشاهده میکنیم
+![image](https://github.com/user-attachments/assets/b4ec5b68-8894-4172-b375-76305db114e3)
