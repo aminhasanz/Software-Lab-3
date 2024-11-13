@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class UserRepository {
-    private final Map<String, User> usersByUserName;
-    private final Map<String, User> usersByEmail;
+    final Map<String, User> usersByUserName;
+    final Map<String, User> usersByEmail;
 
     public UserRepository(List<User> users) {
         this.usersByUserName = users.stream().collect(Collectors.toMap(User::getUsername, u -> u, (u1, u2) -> {
@@ -40,7 +40,13 @@ public class UserRepository {
     }
 
     public boolean removeUser(String username) {
-        // TODO: implement
+        User user = usersByUserName.remove(username);
+        if (user != null) {
+            if (user.getEmail() != null) {
+                usersByEmail.remove(user.getEmail());
+            }
+            return true;
+        }
         return false;
     }
 
