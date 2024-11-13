@@ -1,12 +1,13 @@
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 public class UserService {
-    private final UserRepository repository;
+    private static final UserRepository repository = null;
 
-    public boolean loginWithUsername(String username, String password) {
+    public static boolean loginWithUsername(String username, String password) {
         User userByUsername = repository.getUserByUsername(username);
         if (userByUsername == null) {
             return false;
@@ -14,7 +15,7 @@ public class UserService {
         return userByUsername.getPassword().equals(password);
     }
 
-    public boolean loginWithEmail(String email, String password) {
+    public static boolean loginWithEmail(String email, String password) {
         User userByEmail = repository.getUserByEmail(email);
         if (userByEmail == null) {
             return false;
@@ -27,25 +28,39 @@ public class UserService {
         return repository.addUser(user);
     }
 
-    public boolean registerUser(String username, String password, String email) {
+    public static boolean registerUser(String username, String password, String email) {
         User user = new User(username, password);
         user.setEmail(email);
         return repository.addUser(user);
     }
 
-    public boolean removeUser(String username) {
-        // TODO: implement
+    public static boolean removeUser(String username) {
+        return repository.removeUser(username);
+    }
+
+    public static List<User> getAllUsers() {
+        return new ArrayList<>(repository.usersByUserName.values());
+    }
+
+    public static boolean changeUserEmail(String username, String newEmail) {
+        if (!isValidEmail(newEmail)) {
+            return false;
+        }
+
+        User user = repository.getUserByUsername(username);
+        if (user != null) {
+            if (user.getEmail() != null) {
+                repository.usersByEmail.remove(user.getEmail());
+            }
+            user.setEmail(newEmail);
+            repository.usersByEmail.put(newEmail, user);
+            return true;
+        }
         return false;
     }
 
-    public List<User> getAllUsers() {
-        // TODO: implement
-        return null;
-    }
-
-    public boolean changeUserEmail(String username, String newEmail) {
-        // TODO: implement (if user exists and user's email is valid, then change email)
-        // TODO: after changing user's email, user must be able to login with new email.
-        return false;
+    private static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        return email.matches(emailRegex);
     }
 }
