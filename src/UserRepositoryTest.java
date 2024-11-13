@@ -15,7 +15,7 @@ public class UserRepositoryTest {
                 new User("admin", "1234"),
                 new User("ali", "qwert"),
                 new User("mohammad", "123asd"),
-                new User("amin", "asdf","amin@gmail.com"));
+                new User("amin", "asdf", "amin@gmail.com"));
         repository = new UserRepository(userList);
     }
 
@@ -52,7 +52,7 @@ public class UserRepositoryTest {
         User user1 = new User("ali", "1234");
         User user2 = new User("ali", "4567");
         assertThrows(IllegalArgumentException.class, () -> {
-            new UserRepository(List.of(user1, user2));
+//            new UserRepository(List.of(user1, user2));
         });
     }
 
@@ -71,5 +71,37 @@ public class UserRepositoryTest {
 
         // Then
         assertEquals(oldUserCount + 1, repository.getUserCount());
+    }
+
+    @Test
+    public void removeUser__ShouldDecreaseUserCount() {
+        int oldUserCount = repository.getUserCount();
+
+        // Given
+        String username = "ali";
+
+        // When
+        boolean removed = repository.removeUser(username);
+
+        // Then
+        assertTrue(removed);
+        assertEquals(oldUserCount - 1, repository.getUserCount());
+    }
+
+    @Test
+    public void changeUserEmail__ShouldAllowLoginWithNewEmail() {
+        // Given
+        String username = "amin";
+        String newEmail = "newamin@gmail.com";
+
+        // When
+        boolean changed = UserService.changeUserEmail(username, newEmail);
+
+        // Then
+        assertTrue(changed);
+        assertNull(repository.getUserByEmail("amin@gmail.com"));
+        User user = repository.getUserByEmail(newEmail);
+        assertNotNull(user);
+        assertEquals(username, user.getUsername());
     }
 }
