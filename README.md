@@ -27,3 +27,9 @@
 ![image](https://github.com/user-attachments/assets/7f3d5daf-99f6-41da-8e2a-bd1df28153f4)
 
 
+فیل شدنن تست changeUserEmail
+![image](https://github.com/user-attachments/assets/53f28257-041e-4918-8fc0-cd4c6ae130a9)
+
+پیاده سازی متد change user email
+![image](https://github.com/user-attachments/assets/4f2b347e-bccd-4e17-bb06-d4b83e67a634)
+
